@@ -41,7 +41,7 @@ app.get("/test-db", async (req, res) => {
 });
 
 // API Routes
-app.use("/auth", authRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 // 404 handler
 app.use(notFound);
