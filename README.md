@@ -398,7 +398,7 @@ curl -X DELETE http://localhost:3000/api/v1/bills/1 \
   -H "Authorization: Bearer <TOKEN>"
 ```
 
-**Postman documentation:** - **Note:**
+**Postman documentation:** - [Link Text](https://www.postman.com/martian-satellite-689890/oyf-mini-billing-api
 
 ## 📧 Email Notifications
 
