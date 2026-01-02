@@ -158,6 +158,22 @@ docker exec oyf_billing_api npx sequelize-cli db:migrate
 docker exec oyf_billing_api npx sequelize-cli db:seed:all
 ```
 
+## 💽 Database backup & Disaster recovery
+
+### Backup strategy
+
+- Primary AWS RDS
+- AWS provides enterprise grade automated backups w.ith multiple-AZ
+
+### How it will works
+
+- Amazon RDS automatically takes snapshots of the entire database by default at specific retention period, this gives us the ability to perform a point in time recovery.
+- The automated backups will be stored in an amazon S3 bucket with retention period of about 1 to 30 days.
+-
+- Transaction logs or binary logs are always captured every 5 minutes
+- Enable restoration
+- The snapshots will be stored in an AMAZON S3 bucket
+
 ## 📚 API Documentation
 
 ### Base URL
@@ -398,7 +414,7 @@ curl -X DELETE http://localhost:3000/api/v1/bills/1 \
   -H "Authorization: Bearer <TOKEN>"
 ```
 
-**Postman documentation:** - [Link Text](https://www.postman.com/martian-satellite-689890/oyf-mini-billing-api
+**Postman documentation:** - [Link Text](https://www.postman.com/martian-satellite-689890/oyf-mini-billing-api)
 
 ## 📧 Email Notifications
 
@@ -500,7 +516,7 @@ npm run db:seed    # Seed database with demo data
 
 ## 📄 License
 
-This project is created for the OYF technical assessment.
+This project is created for the OYF.
 
 ## 👨‍💻 Author
 
