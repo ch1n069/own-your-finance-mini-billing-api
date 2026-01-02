@@ -5,6 +5,7 @@ const {
   createBillSchema,
   updateBillSchema,
 } = require("../validators/bill.validator");
+const emailService = require("../services/email.service");
 
 const createBill = async (req, res, next) => {
   const { name, amount, due_date, category, status } = req.body;
@@ -40,6 +41,14 @@ const createBill = async (req, res, next) => {
     console.log(
       `[INFO] Bill created: ID=${bill.id}, Name=${bill.name}, User=${req.user.email}`
     );
+
+    // Send email notification
+    try {
+      await emailService.sendBillCreatedNotification(bill, req.user);
+    } catch (emailError) {
+      console.error('[ERROR] Failed to send email notification:', emailError.message);
+      // Continue even if email fails - don't block the response
+    }
 
     res.status(201).json({
       success: true,
