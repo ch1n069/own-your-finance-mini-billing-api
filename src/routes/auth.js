@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { login } = require("../controllers/authController");
+const { login } = require("../controllers/auth.controller");
 
-// POST /auth/login - Authenticate user and return JWT
-router.post("/auth/login", login);
+// POST /api/v1/auth/login - Authenticate user and return JWT
+router.post("/login", login);
 
 module.exports = router;
