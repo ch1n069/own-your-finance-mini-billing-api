@@ -2,8 +2,8 @@ const db = require("../models");
 const { Op } = require("sequelize");
 const Validator = require("fastest-validator");
 const {
-  validateCreateBill,
-  validateUpdateBill,
+  createBillSchema,
+  updateBillSchema,
 } = require("../validators/bill.validator");
 
 const createBill = async (req, res, next) => {
@@ -102,8 +102,15 @@ const getBills = async (req, res, next) => {
 
 const updateBill = async (req, res, next) => {
   try {
+    const { id } = req.params;
+    const { name, amount, due_date, category, status } = req.body;
+
     // Validate request
-    const validationResult = validateUpdateBill(req.body);
+    const v = new Validator();
+    const validationResult = v.validate(
+      { name, amount, due_date, category, status },
+      updateBillSchema
+    );
     if (validationResult !== true) {
       const errors = validationResult.map((error) => ({
         field: error.field,
@@ -115,9 +122,6 @@ const updateBill = async (req, res, next) => {
         errors,
       });
     }
-
-    const { id } = req.params;
-    const { name, amount, due_date, category, status } = req.body;
 
     const bill = await db.Bill.findOne({
       where: {
