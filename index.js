@@ -3,7 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./src/models");
 const { errorHandler, notFound } = require("./src/middleware/errorHandler");
+const healthRoutes = require("./src/routes/health");
 const authRoutes = require("./src/routes/auth");
+const billRoutes = require("./src/routes/bills");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,35 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Basic health check route
-app.get("/health", (req, res) => {
-  res.json({
-    success: true,
-    message: "Server is running",
-    uptime: process.uptime(),
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// Test database connection
-app.get("/test-db", async (req, res) => {
-  try {
-    await db.sequelize.authenticate();
-    res.json({
-      success: true,
-      message: "Database connection successful",
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Database connection failed",
-      error: error.message,
-    });
-  }
-});
-
-// API Routes
+// Routes
+app.use("/health", healthRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/bills", billRoutes);
 
 // 404 handler
 app.use(notFound);
