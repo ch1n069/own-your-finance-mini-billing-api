@@ -398,6 +398,8 @@ curl -X DELETE http://localhost:3000/api/v1/bills/1 \
   -H "Authorization: Bearer <TOKEN>"
 ```
 
+**Postman documentation:** - **Note:**
+
 ## 📧 Email Notifications
 
 The API sends beautiful HTML email notifications when bills are created. The email includes:
@@ -407,10 +409,6 @@ The API sends beautiful HTML email notifications when bills are created. The ema
 - Responsive design
 - Plain text fallback
 
-To enable email notifications:
-
-1. Set `MOCK_EMAIL=false` in `.env`
-2. Configure your Gmail credentials with an App Password
 3. Update `NODE_MAILER_EMAIL` and `NODE_MAILER_EMAIL_PASSWORD`
 
 ## 🔐 Security Features
@@ -468,71 +466,6 @@ oyf-mini-billing-api/
 └── README.md
 ```
 
-## 🚀 Deployment to Render
-
-### Prerequisites
-
-- GitHub repository
-- Render account
-
-### Steps
-
-1. **Push to GitHub**
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin <your-repo-url>
-git push -u origin main
-```
-
-2. **Create MySQL Database on Render**
-
-- Go to Render Dashboard
-- Click "New +" → "PostgreSQL" or use external MySQL service
-- Note the connection details
-
-3. **Create Web Service on Render**
-
-- Click "New +" → "Web Service"
-- Connect your GitHub repository
-- Configure:
-  - **Name:** oyf-billing-api
-  - **Environment:** Docker
-  - **Region:** Choose nearest
-  - **Branch:** main
-  - **Build Command:** (leave empty for Docker)
-  - **Start Command:** (leave empty for Docker)
-
-4. **Add Environment Variables**
-   Add these in Render's Environment section:
-
-```
-NODE_ENV=production
-PORT=3000
-DB_HOST=<your-mysql-host>
-DB_PORT=3306
-DB_NAME=oyf_billing
-DB_USER=<your-db-user>
-DB_PASSWORD=<your-db-password>
-JWT_SECRET=<generate-secure-secret>
-JWT_EXPIRES_IN=15m
-EMAIL_USER=<your-email>
-EMAIL_PASSWORD=<your-app-password>
-NODE_MAILER_EMAIL=<your-email>
-NODE_MAILER_EMAIL_PASSWORD=<your-app-password>
-NODE_MAILER_PORT=587
-EMAIL_FROM=noreply@oyfbilling.com
-MOCK_EMAIL=false
-```
-
-5. **Deploy**
-
-- Click "Create Web Service"
-- Wait for deployment to complete
-- Run migrations via Render Shell or initial deployment script
-
 ## 📝 Available Scripts
 
 ```bash
@@ -542,7 +475,7 @@ npm run db:migrate # Run database migrations
 npm run db:seed    # Seed database with demo data
 ```
 
-## 🤝 Assessment Completion Checklist
+## 🤝 Completion Checklist
 
 - [x] Part A: Core API Features
 
@@ -571,4 +504,4 @@ This project is created for the OYF technical assessment.
 
 ## 👨‍💻 Author
 
-Bruno - OYF mini billingxs
+Bruno - OYF mini billings
