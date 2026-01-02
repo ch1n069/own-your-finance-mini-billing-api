@@ -2,7 +2,7 @@
 
 A comprehensive RESTful API for managing bills with JWT authentication, built for the OYF technical assessment.
 
-## 🚀 Features
+## Features
 
 - **JWT Authentication** - Secure token-based authentication with 15-minute expiry
 - **Bills CRUD Operations** - Create, Read, Update, Delete bills with validation
@@ -13,7 +13,7 @@ A comprehensive RESTful API for managing bills with JWT authentication, built fo
 - **MySQL Database** - Sequelize ORM with MySQL 8.0
 - **Error Handling** - Centralized error handling with proper HTTP status codes
 
-## 📋 Tech Stack
+## Tech Stack
 
 - **Runtime:** Node.js 18
 - **Framework:** Express.js
@@ -24,14 +24,14 @@ A comprehensive RESTful API for managing bills with JWT authentication, built fo
 - **Email:** Nodemailer with Handlebars templates
 - **Containerization:** Docker & Docker Compose
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 - Node.js 18+ and npm
 - MySQL 8.0
 - Docker and Docker Compose (for containerized deployment)
 - Gmail account with App Password (for email notifications)
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -130,7 +130,7 @@ npm start
 
 The API will be available at `http://localhost:3000`
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 ### Using Docker Compose
 
@@ -158,7 +158,7 @@ docker exec oyf_billing_api npx sequelize-cli db:migrate
 docker exec oyf_billing_api npx sequelize-cli db:seed:all
 ```
 
-## 💽 Database backup & Disaster recovery
+## Database backup & Disaster recovery
 
 ### Backup strategy
 
@@ -172,7 +172,7 @@ docker exec oyf_billing_api npx sequelize-cli db:seed:all
 - Enabling the multiple - AZ option, we will ensure that we have a replica that will always be on standby.
 - Data will synchronously be replicated to the standby replica, keeping it upto date with the primary database. In case of any failure, RDS will automatically redirect our database traffic to the standby instance, minimizing downtown time to just a few minutes
 
-## 📚 API Documentation
+## API Documentation
 
 ### Base URL
 
@@ -375,7 +375,7 @@ Response:
 }
 ```
 
-## 🧪 Testing the API
+## Testing the API
 
 ### Using cURL
 
@@ -414,7 +414,7 @@ curl -X DELETE http://localhost:3000/api/v1/bills/1 \
 
 **Postman documentation:** - [Postman - collection](https://www.postman.com/martian-satellite-689890/oyf-mini-billing-api)
 
-## 📧 Email Notifications
+## Email Notifications
 
 The API sends beautiful HTML email notifications when bills are created. The email includes:
 
@@ -425,7 +425,7 @@ The API sends beautiful HTML email notifications when bills are created. The ema
 
 3. Update `NODE_MAILER_EMAIL` and `NODE_MAILER_EMAIL_PASSWORD`
 
-## 🔐 Security Features
+## Security Features
 
 - JWT authentication with configurable expiration
 - Password hashing with bcrypt (salt rounds: 10)
@@ -434,7 +434,7 @@ The API sends beautiful HTML email notifications when bills are created. The ema
 - SQL injection protection via Sequelize ORM
 - CORS enabled for cross-origin requests
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 oyf-mini-billing-api/
@@ -480,7 +480,7 @@ oyf-mini-billing-api/
 └── README.md
 ```
 
-## 📝 Available Scripts
+## Available Scripts
 
 ```bash
 npm start          # Start production server
@@ -489,10 +489,10 @@ npm run db:migrate # Run database migrations
 npm run db:seed    # Seed database with demo data
 ```
 
-## 📄 License
+## License
 
 This project is created for the OYF.
 
-## 👨‍💻 Author
+## Author
 
 Bruno - OYF mini billings
