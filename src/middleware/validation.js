@@ -1,14 +1,11 @@
-const validateRequest = (schema) => {
+const validateRequest = (validator) => {
   return (req, res, next) => {
-    const { error } = schema.validate(req.body, {
-      abortEarly: false,
-      stripUnknown: true
-    });
+    const result = validator(req.body);
 
-    if (error) {
-      const errors = error.details.map(detail => ({
-        field: detail.path.join('.'),
-        message: detail.message
+    if (result !== true) {
+      const errors = result.map(error => ({
+        field: error.field,
+        message: error.message
       }));
 
       return res.status(400).json({
