@@ -493,8 +493,8 @@ npm run db:seed    # Seed database with demo data
 
 ## License
 
-This project is created for the OYF.
+This project is created for OYF.
 
 ## Author
 
-Bruno - OYF mini billings
+Bruno Gatiba - OYF mini billing api.
